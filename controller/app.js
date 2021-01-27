@@ -140,7 +140,6 @@ function validateField(req, res) {
         break;
       case 'contains':
         if (field_value.length !== undefined && field_value.length >= 0) {
-          console.log(field_value.includes(condition_value));
           if (field_value.includes(condition_value)) {
             code = 200;
             response = responseBuilder({
