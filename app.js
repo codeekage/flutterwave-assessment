@@ -22,5 +22,12 @@ function handlerError(err, req, res, next) {
 
 app.use(handlerError);
 app.use('/', appRoutes);
+app.use('*', (req, res, next) => {
+  return res.status(404).json({
+    message: 'Invalid route passed.',
+    status: 'error',
+    data: null,
+  });
+})
 
 app.listen(PORT, () => console.log(`Application running ${PORT}`));
