@@ -159,7 +159,7 @@ function validateField(req, res, next) {
       } else { response = error; code = 400 }
       break;
     case 'gt':
-      if (condition_value >= field_value) {
+      if (field_value > condition_value) {
         code = 200;
         response = responseBuilder({
           condition,
@@ -172,7 +172,7 @@ function validateField(req, res, next) {
       } else { response = error; code = 400 }
       break;
     case 'neq':
-      if (condition_value !== field_value) {
+      if (field_value !== condition_value) {
         code = 200;
         response = responseBuilder({
           condition,
@@ -185,7 +185,6 @@ function validateField(req, res, next) {
       } else { response = error; code = 400 }
       break;
     case 'contains':
-      console.log(field_value)
       if (field_value.length !== undefined && field_value.length >= 0) {
         console.log(field_value.includes(condition_value));
         if (field_value.includes(condition_value)) {
@@ -206,7 +205,6 @@ function validateField(req, res, next) {
       response = error;
     break;
   }
-
   return res.status(code).json(response);
 }
 
