@@ -21,7 +21,10 @@ Example:
 ```
 
     "message" - Apt response message for your API. (Unless otherwise stated, this message can be anything you decide)
-    "status" - Status for your API response. The two possible values for this prop are "success" and "error" (PS: This isn't the response HTTP status code)
+    "status" - Status for your API response. The two possible values for this prop are "success" and "error" 
+    
+> [PS: This isn't the response HTTP status code]
+
     "data" - This is the meat of your API response. It should contain your actual response data.
 
 Your rule-validation API should have just two routes.
