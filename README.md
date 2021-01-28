@@ -233,8 +233,6 @@ e.g. if your solution is hosted at myflwsoln.herokuapp.com .. the following rout
 a/ HTTP [GET] myflwsoln.herokuapp.com/
 b/ HTTP [POST] myflwsoln.herokuapp.com/validate-rule
 
-Once done, submit your solution using this google form https://forms.gle/qnWtpNiCMrfnPuqe9
-
 Example JSON request payloads:
 #### EX1 
 ```json
