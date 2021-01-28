@@ -52,7 +52,8 @@ Please note:
 
     d/ mobile should be your preferred mobile number of contact 
 
-    e/ twitter should be your twitter handle (the '@' symbol must be included). [PS: This field is optional, you can choose to include it in your response or not]
+    e/ twitter should be your twitter handle (the '@' symbol must be included).
+> [PS: This field is optional, you can choose to include it in your response or not]
 
   2/ Second route is the rule validation route. HTTP POST "/validate-rule"
   The route should accept JSON data containing a rule and data field to validate the rule against. Example:
