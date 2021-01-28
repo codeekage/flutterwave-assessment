@@ -1,0 +1,10 @@
+extends: airbnb-base
+rules:
+  no-underscore-dangle: [2, { 'allow': ['_id'] }]
+  no-console: [2, { 'allow': ['error', 'info'] }]
+  max-len: ['error', {'code': 255}]
+plugins: ['jest']
+env:
+  jest/globals: true
+  es6: true
+  

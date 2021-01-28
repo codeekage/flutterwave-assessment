@@ -1,6 +1,5 @@
+/* eslint-disable camelcase */
 function responseBuilder({
-  status,
-  error,
   field,
   field_value,
   condition,
@@ -8,10 +7,10 @@ function responseBuilder({
 }) {
   return {
     message: `field ${field} successfully validated.`,
-    status,
+    status: 'success',
     data: {
       validation: {
-        error,
+        error: false,
         field,
         field_value,
         condition,
@@ -21,7 +20,9 @@ function responseBuilder({
   };
 }
 
-function errorBuilder({ field, field_value, condition, condition_value }) {
+function errorBuilder({
+  field, field_value, condition, condition_value,
+}) {
   return {
     message: `field ${field} failed validation.`,
     status: 'error',
@@ -40,4 +41,4 @@ function errorBuilder({ field, field_value, condition, condition_value }) {
 module.exports = {
   responseBuilder,
   errorBuilder,
-}
+};
