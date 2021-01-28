@@ -19,6 +19,14 @@ function findLabel(data, label) {
 function searchData(data, field) {
   const fieldSplit = field.split('.');
   const firstIndex = fieldSplit[0];
+
+  if (!Object.keys(data).includes(firstIndex)) {
+    return {
+      message: `field ${field} is missing from data.`,
+      status: 'error',
+      data: null,
+    };
+  }
   let field_value;
   if (fieldSplit.length > 1) {
     const lastIndex = fieldSplit[fieldSplit.length - 1];
@@ -37,14 +45,6 @@ function searchData(data, field) {
     };
   }
   field_value = data[field];
-
-  if (!Object.keys(data).includes(firstIndex)) {
-    return {
-      message: `field ${field} is missing from data.`,
-      status: 'error',
-      data: null,
-    };
-  }
   return {
     message: null,
     status: 'success',
