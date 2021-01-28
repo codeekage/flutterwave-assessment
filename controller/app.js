@@ -16,8 +16,8 @@ function rootController(req, res) {
     data: {
       name: 'Abraham Agiri, Jr.',
       github: '@codeekage',
-      email: 'agirabrahamjunior@gmail.com',
-      mobile: '07066229833',
+      email: process.env.EMAIL,
+      mobile: process.env.PHONE_NUMBER,
       twitter: '@codeekage',
     },
   });

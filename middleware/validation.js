@@ -1,6 +1,6 @@
 const Joi = require('joi');
 
-
+// eslint-disable-next-line consistent-return
 function findVowels(value) {
   const vowels = ['a', 'e', 'i', 'o', 'u'];
   if (value !== undefined && value.length > 0) {
@@ -12,7 +12,7 @@ function findVowels(value) {
   }
 }
 
-function validateRuleSchema(req, res, next){
+function validateRuleSchema(req, res, next) {
   const CONDITIONS = ['eq', 'neq', 'gt', 'gte', 'contains'];
   const schema = Joi.object({
     rule: Joi.object({
@@ -28,7 +28,6 @@ function validateRuleSchema(req, res, next){
   const validation = schema.validate(req.body);
   if (validation.error) {
     const errType = validation.error.details[0].context.type;
-    console.log(errType);
     return res.status(400).json({
       message: validation.error.details[0].message
         .replace(/['"]+/g, '')
@@ -44,4 +43,4 @@ function validateRuleSchema(req, res, next){
 
 module.exports = {
   validateRuleSchema,
-}
+};
