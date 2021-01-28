@@ -1,6 +1,6 @@
 # Flutter Assessments
 
-NodeJS Backend Engineer
+## NodeJS Backend Engineer
 
 The task:
 Create a simple rule-validation API. 
@@ -9,6 +9,8 @@ Create a simple rule-validation API.
 The response structure for your API should be fashioned after the popular JSEND pattern. 
 
 Example:
+
+```json
 {
   "message": "API response message",
   "status": "success",
@@ -16,6 +18,7 @@ Example:
     isValidForRule: true,
   }
 }
+```
 
 "message" - Apt response message for your API. (Unless otherwise stated, this message can be anything you decide)
 "status" - Status for your API response. The two possible values for this prop are "success" and "error" (PS: This isn't the response HTTP status code)
@@ -26,8 +29,9 @@ Your rule-validation API should have just two routes.
 1/ First route is the base route. HTTP GET "/"
 It should return with data in the following format:
 
+```json
 {
-  "message": "My Rule-Validation API"
+  "message": "My Rule-Validation API",
   "status": "success",
   "data": {
     "name": "Amos Burton",
@@ -37,6 +41,7 @@ It should return with data in the following format:
     "twitter": "@amosb"
   }
 }
+```
 
 Please note:
 a/ name should be your full name
@@ -47,9 +52,11 @@ e/ twitter should be your twitter handle (the '@' symbol must be included). [PS:
 
 2/ Second route is the rule validation route. HTTP POST "/validate-rule"
 The route should accept JSON data containing a rule and data field to validate the rule against. Example:
+
+```json
 {
   "rule": {
-    "field": "missions"
+    "field": "missions",
     "condition": "gte",
     "condition_value": 30
   },
@@ -61,6 +68,7 @@ The route should accept JSON data containing a rule and data field to validate t
     "missions": 45
   }
 }
+```
 
 Endpoint requirements/constraints:
 a/ The rule and data fields are required.
@@ -84,57 +92,80 @@ c2/ A valid array
 c3/ A string
 
 d/ If a required field isn't passed. Your endpoint should return with a response (HTTP 400 status code) that is similar to the below: 
+
+```json
 {
   "message": "[field] is required."
   "status": "error",
   "data": null
 }
+```
+
 E.g. if the rule field is not passed, your endpoint response should be:
+
+```json
 {
-  "message": "rule is required."
+  "message": "rule is required.",
   "status": "error",
   "data": null
 }
+```
 
 e/ If a field is of the wrong type, your endpoint should return with a response (HTTP 400 status code) that is similar to the below:
+
+```json
 {
-  "message": "[field] should be a|an [type]."
+  "message": "[field] should be a|an [type].",
   "status": "error",
   "data": null
 }
+```
+
 E.g. if the rule field is passed as a number instead of a valid object, your endpoint response should be:
+
+```json
 {
-  "message": "rule should be an object."
+  "message": "rule should be an object.",
   "status": "error",
   "data": null
 }
+```
 
 f/ If an invalid JSON payload is passed to your API, your endpoint response (HTTP 400 status code) should be:
+
+```json
 {
-  "message": "Invalid JSON payload passed."
+  "message": "Invalid JSON payload passed.",
   "status": "error",
   "data": null
 }
+```
 
 [PS: For the error responses described above, please note that the punctuation is important. I.e the period at the end of each error message.]
 
 g/ If the field specified in the rule object is missing from the data passed, your endpoint response (HTTP 400 status code) should be:
+```json
 {
-  "message": "field [name of field] is missing from data."
+  "message": "field [name of field] is missing from data.",
   "status": "error",
   "data": null
 }
+```
 
-e.g. 
+e.g.
+```json 
 {
-  "message": "field age is missing from data."
+  "message": "field age is missing from data.",
   "status": "error",
   "data": null
 }
+```
 
-h/ If the rule is successfully validated, your endpoint response (HTTP 200 status code) should be:
+h/ If the rule is successfully validated, your 
+endpoint response (HTTP 200 status code) should be:
+```json
 {
-  "message": "field [name of field] successfully validated."
+  "message": "field [name of field] successfully validated.",
   "status": "success",
   "data": {
     "validation": {
@@ -146,10 +177,11 @@ h/ If the rule is successfully validated, your endpoint response (HTTP 200 statu
     }
   }
 }
-
+```
 e.g.
+```json
 {
-  "message": "field missions successfully validated."
+  "message": "field missions successfully validated.",
   "status": "success",
   "data": {
     "validation": {
@@ -161,10 +193,12 @@ e.g.
     }
   }
 }
+```
 
 i/ If the rule validation fails, your endpoint response (HTTP 400 status code) should be:
+```json
 {
-  "message": "field [name of field] failed validation."
+  "message": "field [name of field] failed validation.",
   "status": "error",
   "data": {
     "validation": {
@@ -176,9 +210,11 @@ i/ If the rule validation fails, your endpoint response (HTTP 400 status code) s
     }
   }
 }
+```
 
+```json
 {
-  "message": "field missions failed validation."
+  "message": "field missions failed validation.",
   "status": "error",
   "data": {
     "validation": {
@@ -190,6 +226,7 @@ i/ If the rule validation fails, your endpoint response (HTTP 400 status code) s
     }
   }
 }
+```
 
 j/ Host your solution on Glitch / Heroku or any other platform you prefer. Be sure that the base route and API endpoint routes are accessible.
 e.g. if your solution is hosted at myflwsoln.herokuapp.com .. the following routes should be accessible 
@@ -199,10 +236,11 @@ b/ HTTP [POST] myflwsoln.herokuapp.com/validate-rule
 Once done, submit your solution using this google form https://forms.gle/qnWtpNiCMrfnPuqe9
 
 Example JSON request payloads:
-= EX1 =
+#### EX1 
+```json
 {
   "rule": {
-    "field": "missions.count"
+    "field": "missions.count",
     "condition": "gte",
     "condition_value": 30
   },
@@ -218,7 +256,9 @@ Example JSON request payloads:
     }
   }
 }
+```
 
+```json
 Response: (HTTP 200)
 {
   "message": "field missions.count successfully validated."
@@ -233,8 +273,10 @@ Response: (HTTP 200)
     }
   }
 }
+```
 
-= EX2 =
+### EX2
+```json
 {
   "rule": {
     "field": "0"
@@ -243,7 +285,8 @@ Response: (HTTP 200)
   },
   "data": "damien-marley"
 }
-
+```
+```json
 Response: (HTTP 400)
 {
   "message": "field 0 failed validation."
@@ -258,9 +301,10 @@ Response: (HTTP 400)
     }
   }
 }
+```
 
-
-= EX3 =
+### EX3 
+```json
 {
   "rule": {
     "field": "5"
@@ -269,10 +313,12 @@ Response: (HTTP 400)
   },
   "data": ["The Nauvoo", "The Razorback", "The Roci", "Tycho"]
 }
-
+```
+```json
 Response: (HTTP 400)
 {
-  "message": "field 5 is missing from data."
+  "message": "field 5 is missing from data.",
   "status": "error",
   "data": null
 }
+```
