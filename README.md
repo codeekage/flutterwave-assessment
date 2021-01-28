@@ -20,14 +20,14 @@ Example:
 }
 ```
 
-"message" - Apt response message for your API. (Unless otherwise stated, this message can be anything you decide)
-"status" - Status for your API response. The two possible values for this prop are "success" and "error" (PS: This isn't the response HTTP status code)
-"data" - This is the meat of your API response. It should contain your actual response data.
+    "message" - Apt response message for your API. (Unless otherwise stated, this message can be anything you decide)
+    "status" - Status for your API response. The two possible values for this prop are "success" and "error" (PS: This isn't the response HTTP status code)
+    "data" - This is the meat of your API response. It should contain your actual response data.
 
 Your rule-validation API should have just two routes.
 
-1/ First route is the base route. HTTP GET "/"
-It should return with data in the following format:
+  1/ First route is the base route. HTTP GET "/"
+  It should return with data in the following format:
 
 ```json
 {
@@ -44,18 +44,18 @@ It should return with data in the following format:
 ```
 
 Please note:
-a/ name should be your full name
+    a/ name should be your full name
 
-b/ github should be your github handle (the '@' symbol must be included)
+    b/ github should be your github handle (the '@' symbol must be included)
 
-c/ email should be your preferred email of contact 
+    c/ email should be your preferred email of contact 
 
-d/ mobile should be your preferred mobile number of contact 
+    d/ mobile should be your preferred mobile number of contact 
 
-e/ twitter should be your twitter handle (the '@' symbol must be included). [PS: This field is optional, you can choose to include it in your response or not]
+    e/ twitter should be your twitter handle (the '@' symbol must be included). [PS: This field is optional, you can choose to include it in your response or not]
 
-2/ Second route is the rule validation route. HTTP POST "/validate-rule"
-The route should accept JSON data containing a rule and data field to validate the rule against. Example:
+  2/ Second route is the rule validation route. HTTP POST "/validate-rule"
+  The route should accept JSON data containing a rule and data field to validate the rule against. Example:
 
 ```json
 {
@@ -74,14 +74,14 @@ The route should accept JSON data containing a rule and data field to validate t
 }
 ```
 
-Endpoint requirements/constraints:
-a/ The rule and data fields are required.
+#### Endpoint requirements/constraints:
+  a/ The rule and data fields are required.
 
-b/ The rule field should be a valid JSON object and should contain the following required fields:
+  b/ The rule field should be a valid JSON object and should contain the following required fields:
 
-b1/ field: The field in the data passed to validate the rule against. Your implementation for the field should also support nested data objects.
+  b1/ field: The field in the data passed to validate the rule against. Your implementation for the field should also support nested data objects.
 
-e.g. if field is passed as "card.first6" it means you need to check to see if the data contains a card field, then check to see if the card field contains a first6 field.
+  e.g. if field is passed as "card.first6" it means you need to check to see if the data contains a card field, then check to see if the card field contains a first6 field.
 
 > [PS: The nesting should not be more than two levels]
 b2/ condition: The condition to use for validating the rule. Accepted condition values are:
@@ -99,12 +99,12 @@ b2/ condition: The condition to use for validating the rule. Accepted condition 
 b3/ condition_value: The condition value to run the rule against. Your rule evaluation is expected to be like: 
 ["data.field"] ["rule.condition"] ["rule.condition_value"]
 
-- c/ The data field can be any of:
-- c1/ A valid JSON object 
-- c2/ A valid array
-- c3/ A string
+    c/ The data field can be any of:
+    c1/ A valid JSON object 
+    c2/ A valid array
+    c3/ A string
 
-d/ If a required field isn't passed. Your endpoint should return with a response (HTTP 400 status code) that is similar to the below: 
+  d/ If a required field isn't passed. Your endpoint should return with a response (HTTP 400 status code) that is similar to the below: 
 
 ```json
 {
@@ -114,7 +114,7 @@ d/ If a required field isn't passed. Your endpoint should return with a response
 }
 ```
 
-E.g. if the rule field is not passed, your endpoint response should be:
+#### E.g. if the rule field is not passed, your endpoint response should be:
 
 ```json
 {
