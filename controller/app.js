@@ -38,27 +38,19 @@ function validateField(req, res) {
       return res.status(400).json(searchField);
     }
     const field_value = searchField.data;
-
-    const error = errorBuilder({
+    const payload = {
       field,
       field_value,
       condition,
       condition_value,
-    });
-
-    const success = responseBuilder({
-      condition,
-      condition_value,
-      field,
-      field_value,
-    });
+    };
+    const error = errorBuilder(payload);
+    const success = responseBuilder(payload);
 
     const { code, response } = validateRule({
-      condition,
-      condition_value,
+      ...payload,
       error,
       success,
-      field_value,
     });
 
     return res.status(code).json(response);
