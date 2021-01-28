@@ -204,9 +204,9 @@ i/ If the rule validation fails, your endpoint response (HTTP 400 status code) s
     "validation": {
       "error": false,
       "field": "[name of field]",
-      "field_value": [value of field],
+      "field_value": "[value of field]",
       "condition": "[rule condition]",
-      "condition_value: [condition value]
+      "condition_value: "[condition value]"
     }
   }
 }
@@ -261,7 +261,7 @@ Example JSON request payloads:
 ```json
 Response: (HTTP 200)
 {
-  "message": "field missions.count successfully validated."
+  "message": "field missions.count successfully validated.",
   "status": "success",
   "data": {
     "validation": {
@@ -279,7 +279,7 @@ Response: (HTTP 200)
 ```json
 {
   "rule": {
-    "field": "0"
+    "field": "0",
     "condition": "eq",
     "condition_value": "a"
   },
